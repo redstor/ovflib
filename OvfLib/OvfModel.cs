@@ -10,10 +10,10 @@ namespace Redstor.OvfLib
         private readonly EnvelopeType envelope;
         private readonly IDictionary<DiskFormat, string> formatStringLookup = new Dictionary<DiskFormat, string>
         {
-            { DiskFormat.VmdkSparse, "http://www.vmware.com/interfaces/specifications/vmdk.html#streamOptimized" }
+            { DiskFormat.VmdkStreamOptimized, "http://www.vmware.com/interfaces/specifications/vmdk.html#streamOptimized" }
         };
 
-        public OvfModel(string vmName, int numCpus, int memoryMb, IList<Disk> diskModels)
+        public OvfModel(string vmName, int numCpus, int memoryMb, IList<Disk> diskModels, string network)
         {
             var diskFiles = diskModels.Select((d, i) => new File_Type {href = "file://" + d.Path, id = "diskFile" + i, sizeSpecified = true, size=d.FileSize }).ToList();
             var disks = diskFiles.Select((f, i) => new VirtualDiskDesc_Type {fileRef = f.id, diskId = "diskId" + i, capacity = diskModels[i].CapacityMb.ToString(), format = formatStringLookup[diskModels[i].Format], capacityAllocationUnits = "byte * 2^20" })
@@ -52,6 +52,17 @@ namespace Redstor.OvfLib
                     ElementName = new cimString {Value = "Memory"},
                     ResourceType = new ResourceType {Value = "4"},
                     VirtualQuantity = new cimUnsignedLong {Value = (ulong)memoryMb}
+                },
+                new RASD_Type
+                {
+                    AutomaticAllocation = new cimBoolean {Value = true},
+                    AutomaticDeallocation = new cimBoolean { Value = false},
+                    InstanceID = new cimString {Value = "network"},
+                    ElementName = new cimString {Value = "Network adapter 1"},
+                    ResourceType = new ResourceType {Value = "10"},
+                    ResourceSubType = new cimString {Value = "E1000"},
+                    VirtualQuantity = new cimUnsignedLong {Value = (ulong)memoryMb},
+                    Connection = new [] { new cimString {  Value = network} }
                 }
             };
 
@@ -85,7 +96,7 @@ namespace Redstor.OvfLib
                 {
                     File = diskFiles.ToArray()
                 },
-                Items = new []
+                Items = new Section_Type[]
                 {
                     new DiskSection_Type
                     {
@@ -94,6 +105,20 @@ namespace Redstor.OvfLib
                             Value = "Disks"
                         },
                         Disk = disks.ToArray()
+                    },
+                    new NetworkSection_Type
+                    {
+                        Info = new Msg_Type
+                        {
+                            Value = "List of networks"
+                        },
+                        Network = new []
+                        {
+                            new NetworkSection_TypeNetwork
+                            {
+                                name = "VM Network"
+                            }
+                        }
                     }
                 }
             };
