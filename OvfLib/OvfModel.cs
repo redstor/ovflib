@@ -13,7 +13,7 @@ namespace Redstor.OvfLib
             { DiskFormat.VmdkSparse, "http://www.vmware.com/interfaces/specifications/vmdk.html#streamOptimized" }
         };
 
-        public OvfModel(string vmName, IList<Disk> diskModels)
+        public OvfModel(string vmName, int numCpus, int memoryMb, IList<Disk> diskModels)
         {
             var diskFiles = diskModels.Select((d, i) => new File_Type {href = "file://" + d.Path, id = "diskFile" + i, sizeSpecified = true, size=d.FileSize }).ToList();
             var disks = diskFiles.Select((f, i) => new VirtualDiskDesc_Type {fileRef = f.id, diskId = "diskId" + i, capacity = diskModels[i].CapacityMb.ToString(), format = formatStringLookup[diskModels[i].Format], capacityAllocationUnits = "byte * 2^20" })
@@ -41,7 +41,7 @@ namespace Redstor.OvfLib
                     InstanceID = new cimString {Value = "cpu"},
                     ElementName = new cimString {Value = "Virtual CPUs"},
                     ResourceType = new ResourceType {Value = "3"},
-                    VirtualQuantity = new cimUnsignedLong {Value = 1}
+                    VirtualQuantity = new cimUnsignedLong {Value = (ulong)numCpus}
                 },
                 new RASD_Type
                 {
@@ -51,7 +51,7 @@ namespace Redstor.OvfLib
                     InstanceID = new cimString {Value = "memory"},
                     ElementName = new cimString {Value = "Memory"},
                     ResourceType = new ResourceType {Value = "4"},
-                    VirtualQuantity = new cimUnsignedLong {Value = 4096}
+                    VirtualQuantity = new cimUnsignedLong {Value = (ulong)memoryMb}
                 }
             };
 
