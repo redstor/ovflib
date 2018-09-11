@@ -2,6 +2,7 @@
 {
     public enum DiskFormat
     {
-        VmdkStreamOptimized
+        VmdkStreamOptimized,
+        VmdkSparse
     }
 }
