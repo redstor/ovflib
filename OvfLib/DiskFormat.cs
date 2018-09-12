@@ -3,6 +3,8 @@
     public enum DiskFormat
     {
         VmdkStreamOptimized,
-        VmdkSparse
+        VmdkSparse,
+        VhdSparse,
+        VhdxSparse
     }
 }

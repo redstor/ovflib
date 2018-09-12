@@ -13,6 +13,8 @@ namespace Redstor.OvfLib
         {
             { DiskFormat.VmdkStreamOptimized, "http://www.vmware.com/interfaces/specifications/vmdk.html#streamOptimized" },
             { DiskFormat.VmdkSparse, "http://www.vmware.com/interfaces/specifications/vmdk.html#sparse" },
+            { DiskFormat.VhdSparse, "http://technet.microsoft.com/en-us/virtualserver/bb676673.aspx#monolithic_sparse" },
+            { DiskFormat.VhdxSparse, "http://technet.microsoft.com/en-us/library/hh831446.aspx#monolithic_sparse" },
         };
 
         public OvfModel(string vmName, int numCpus, int memoryMb, IList<Disk> diskModels, string network)
