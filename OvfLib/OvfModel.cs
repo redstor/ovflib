@@ -8,6 +8,7 @@ namespace Redstor.OvfLib
     public class OvfModel
     {
         private readonly EnvelopeType envelope;
+        // https://wiki.abiquo.com/display/ABI38/Template+Compatibility+Table#TemplateCompatibilityTable-SupportedDiskFormatTypes
         private readonly IDictionary<DiskFormat, string> formatStringLookup = new Dictionary<DiskFormat, string>
         {
             { DiskFormat.VmdkStreamOptimized, "http://www.vmware.com/interfaces/specifications/vmdk.html#streamOptimized" },
@@ -16,7 +17,7 @@ namespace Redstor.OvfLib
 
         public OvfModel(string vmName, int numCpus, int memoryMb, IList<Disk> diskModels, string network)
         {
-            var diskFiles = diskModels.Select((d, i) => new File_Type {href = "file://" + d.Path, id = "diskFile" + i, sizeSpecified = true, size=d.FileSize }).ToList();
+            var diskFiles = diskModels.Select((d, i) => new File_Type {href = d.Path, id = "diskFile" + i, sizeSpecified = true, size=d.FileSize }).ToList();
             var disks = diskFiles.Select((f, i) => new VirtualDiskDesc_Type {fileRef = f.id, diskId = "diskId" + i, capacity = diskModels[i].CapacityMb.ToString(), format = formatStringLookup[diskModels[i].Format], capacityAllocationUnits = "byte * 2^20" })
                 .ToList();
 
