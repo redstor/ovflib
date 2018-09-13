@@ -65,7 +65,7 @@ namespace Redstor.OvfLib
                     ElementName = new cimString {Value = "Network adapter 1"},
                     ResourceType = new ResourceType {Value = "10"},
                     ResourceSubType = new cimString {Value = "E1000"},
-                    VirtualQuantity = new cimUnsignedLong {Value = (ulong)memoryMb},
+                    VirtualQuantity = new cimUnsignedLong {Value = 1},
                     Connection = new [] { new cimString {  Value = network} }
                 }
             };
