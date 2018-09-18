@@ -7,7 +7,7 @@ namespace Redstor.OvfLib
 {
     public class VMWareOvfModel : OvfModel
     {
-        public VMWareOvfModel(string vmName, int numCpus, int memoryMb, IList<Disk> diskModels, string network, OperatingSystemType operatingSystemType) : base(vmName, numCpus, memoryMb, diskModels, network, operatingSystemType)
+        public VMWareOvfModel(string vmName, int numCpus, int memoryMb, IList<Disk> diskModels, string network, OperatingSystemType operatingSystemType, Firmware firmware) : base(vmName, numCpus, memoryMb, diskModels, network, operatingSystemType)
         {
             var operatingSystemSection = envelope.Item.Items.OfType<OperatingSystemSection_Type>().Single();
 
@@ -15,6 +15,12 @@ namespace Redstor.OvfLib
 
             operatingSystemSection.osType = osType;
             operatingSystemSection.osTypeSpecified = true;
+
+            var hardwareSection = envelope.Item.Items.OfType<VirtualHardwareSection_Type>().Single();
+            hardwareSection.Config = new[]
+            {
+                new Config {key = "firmware", value = firmware == Firmware.BIOS ? "bios" : "efi"}
+            };
         }
 
         private GuestOsType GetOsType(OperatingSystemType operatingSystemType)
