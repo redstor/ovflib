@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Xml.Serialization;
@@ -7,7 +8,7 @@ namespace Redstor.OvfLib
 {
     public class OvfModel
     {
-        private readonly EnvelopeType envelope;
+        protected readonly EnvelopeType envelope;
         // https://wiki.abiquo.com/display/ABI38/Template+Compatibility+Table#TemplateCompatibilityTable-SupportedDiskFormatTypes
         private readonly IDictionary<DiskFormat, string> formatStringLookup = new Dictionary<DiskFormat, string>
         {
@@ -17,7 +18,7 @@ namespace Redstor.OvfLib
             { DiskFormat.VhdxSparse, "http://technet.microsoft.com/en-us/library/hh831446.aspx#monolithic_sparse" },
         };
 
-        public OvfModel(string vmName, int numCpus, int memoryMb, IList<Disk> diskModels, string network)
+        public OvfModel(string vmName, int numCpus, int memoryMb, IList<Disk> diskModels, string network, OperatingSystemType osType)
         {
             var diskFiles = diskModels.Select((d, i) => new File_Type {href = d.Path, id = "diskFile" + i, sizeSpecified = true, size=d.FileSize }).ToList();
             var disks = diskFiles.Select((f, i) => new VirtualDiskDesc_Type {fileRef = f.id, diskId = "diskId" + i, capacity = diskModels[i].CapacityMb.ToString(), format = formatStringLookup[diskModels[i].Format], capacityAllocationUnits = "byte * 2^20" })
@@ -84,7 +85,7 @@ namespace Redstor.OvfLib
                     {
                         Value = vmName
                     },
-                    Items = new []
+                    Items = new Section_Type[]
                     {
                         new VirtualHardwareSection_Type
                         {
@@ -93,8 +94,9 @@ namespace Redstor.OvfLib
                                 Value = "Hardware"
                             },
                             Item = hardwareItems
-                        }
-                    }
+                        },
+                        CreateOperatingSystemSection(osType)
+                    },
                 },
                 References = new References_Type
                 {
@@ -126,6 +128,36 @@ namespace Redstor.OvfLib
                     }
                 }
             };
+        }
+
+        private static Section_Type CreateOperatingSystemSection(OperatingSystemType osType)
+        {
+            var section = new OperatingSystemSection_Type();
+
+            switch (osType)
+            {
+                case OperatingSystemType.Windows2008R2:
+                    section.id = 103;
+                    section.Info = new Msg_Type {Value = "Windows Server 2008 R2"};
+                    break;
+                case OperatingSystemType.Windows2012:
+                    section.id = 115;
+                    section.Info = new Msg_Type { Value = "Windows Server 2012" };
+                    break;
+                case OperatingSystemType.Windows7x86:
+                    section.id = 105;
+                    section.Info = new Msg_Type { Value = "Windows 7 32-bit" };
+                    break;
+                case OperatingSystemType.Windows7x64:
+                    section.id = 105;
+                    section.version = "64";
+                    section.Info = new Msg_Type { Value = "Windows 7 64-bit" };
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+
+            return section;
         }
 
         public void WriteToStream(Stream stream)
