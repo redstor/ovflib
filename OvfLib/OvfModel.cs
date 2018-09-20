@@ -20,21 +20,43 @@ namespace Redstor.OvfLib
 
         public OvfModel(string vmName, int numCpus, int memoryMb, IList<Disk> diskModels, string network, OperatingSystemType osType)
         {
-            var diskFiles = diskModels.Select((d, i) => new File_Type {href = d.Path, id = "diskFile" + i, sizeSpecified = true, size=d.FileSize }).ToList();
-            var disks = diskFiles.Select((f, i) => new VirtualDiskDesc_Type {fileRef = f.id, diskId = "diskId" + i, capacity = diskModels[i].CapacityMb.ToString(), format = formatStringLookup[diskModels[i].Format], capacityAllocationUnits = "byte * 2^20" })
-                .ToList();
+            var diskFiles = new List<File_Type>();
+            var disks = new List<VirtualDiskDesc_Type>();
+            var diskDrives = new List<RASD_Type>();
+            
+            int ideDiskCount = 0;
 
-            var diskDrives = disks.Select(d =>
-                new RASD_Type
+            for (var i = 0; i < diskModels.Count; i++)
+            {
+                var diskModel = diskModels[i];
+                var diskFile = new File_Type {href = diskModel.Path, id = "diskFile" + i, sizeSpecified = true, size = diskModel.FileSize};
+                var disk = new VirtualDiskDesc_Type
                 {
+                    fileRef = diskFile.id, diskId = "diskId" + i, capacity = diskModels[i].CapacityMb.ToString(),
+                    format = formatStringLookup[diskModels[i].Format], capacityAllocationUnits = "byte * 2^20"
+                };
+                
+                var parent = "ide" + ideDiskCount / 2;
+                var addressOnParent = ideDiskCount % 2;
+
+                var diskDrive = new RASD_Type
+                {
+                    AddressOnParent = new cimString {Value = addressOnParent.ToString()},
                     AutomaticAllocation = new cimBoolean {Value = false},
                     AutomaticDeallocation = new cimBoolean {Value = false},
-                    InstanceID = new cimString {Value = d.diskId},
-                    ElementName = new cimString {Value = "Disk " + d.diskId},
+                    InstanceID = new cimString {Value = disk.diskId},
+                    ElementName = new cimString {Value = "Disk " + disk.diskId},
                     ResourceType = new ResourceType {Value = "17"},
-                    HostResource = new[] {new cimString {Value = "ovf:/disk/" + d.diskId}}
-                }
-            );
+                    HostResource = new[] {new cimString {Value = "ovf:/disk/" + disk.diskId}},
+                    Parent = new cimString {Value = parent}
+                };
+
+                ideDiskCount++;
+
+                diskFiles.Add(diskFile);
+                disks.Add(disk);
+                diskDrives.Add(diskDrive);
+            }
 
             var systemHardware = new[]
             {
@@ -68,6 +90,22 @@ namespace Redstor.OvfLib
                     ResourceSubType = new cimString {Value = "E1000"},
                     VirtualQuantity = new cimUnsignedLong {Value = 1},
                     Connection = new [] { new cimString {  Value = network} }
+                },
+                new RASD_Type
+                {
+                    AutomaticAllocation = new cimBoolean {Value = false},
+                    AutomaticDeallocation = new cimBoolean { Value = false},
+                    InstanceID = new cimString {Value = "ide0"},
+                    ElementName = new cimString {Value = "IDE"},
+                    ResourceType = new ResourceType {Value = "5"}
+                },
+                new RASD_Type
+                {
+                    AutomaticAllocation = new cimBoolean {Value = false},
+                    AutomaticDeallocation = new cimBoolean { Value = false},
+                    InstanceID = new cimString {Value = "ide1"},
+                    ElementName = new cimString {Value = "IDE"},
+                    ResourceType = new ResourceType {Value = "5"}
                 }
             };
 

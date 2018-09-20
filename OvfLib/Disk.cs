@@ -2,7 +2,7 @@
 {
     public class Disk
     {
-        public Disk(string path, ulong fileSize, DiskFormat format, long capacityMb)
+        public Disk(string path, ulong fileSize, DiskFormat format, long capacityMb, ControllerType controllerType)
         {
             Path = path;
             FileSize = fileSize;
