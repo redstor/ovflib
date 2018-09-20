@@ -14,54 +14,7 @@ namespace Redstor.OvfLib
         {
             var diskElements = new DiskElementsFactory().CreateDiskModels(diskModels);
 
-            var systemHardware = new[]
-            {
-                new RASD_Type
-                {
-                    AllocationUnits = new cimString { Value = "hertz * 10 ^ 6" },
-                    InstanceID = new cimString {Value = "cpu"},
-                    ElementName = new cimString {Value = "Virtual CPUs"},
-                    ResourceType = new ResourceType {Value = "3"},
-                    VirtualQuantity = new cimUnsignedLong {Value = (ulong)numCpus}
-                },
-                new RASD_Type
-                {
-                    AllocationUnits = new cimString { Value = "byte * 2^20" },
-                    InstanceID = new cimString {Value = "memory"},
-                    ElementName = new cimString {Value = "Memory"},
-                    ResourceType = new ResourceType {Value = "4"},
-                    VirtualQuantity = new cimUnsignedLong {Value = (ulong)memoryMb}
-                },
-                new RASD_Type
-                {
-                    AutomaticAllocation = new cimBoolean {Value = true},
-                    InstanceID = new cimString {Value = "network"},
-                    ElementName = new cimString {Value = "Network adapter 1"},
-                    ResourceType = new ResourceType {Value = "10"},
-                    ResourceSubType = new cimString {Value = "E1000"},
-                    VirtualQuantity = new cimUnsignedLong {Value = 1},
-                    Connection = new [] { new cimString {  Value = network} }
-                },
-                new RASD_Type
-                {
-                    InstanceID = new cimString {Value = "ide0"},
-                    ElementName = new cimString {Value = "IDE"},
-                    ResourceType = new ResourceType {Value = "5"}
-                },
-                new RASD_Type
-                {
-                    InstanceID = new cimString {Value = "ide1"},
-                    ElementName = new cimString {Value = "IDE"},
-                    ResourceType = new ResourceType {Value = "5"}
-                },
-                new RASD_Type
-                {
-                    InstanceID = new cimString {Value = "scsi0"},
-                    ElementName = new cimString {Value = "SCSI"},
-                    ResourceType = new ResourceType {Value = "6"},
-                    ResourceSubType = new cimString { Value = "lsilogicsas" }
-                }
-            };
+            var systemHardware = GetBaseHardware(numCpus, memoryMb, network);
 
             var hardwareItems = diskElements.DiskDrives.Union(systemHardware).ToArray();
             envelope = new EnvelopeType()
@@ -120,6 +73,65 @@ namespace Redstor.OvfLib
                     }
                 }
             };
+        }
+
+        private static IList<RASD_Type> GetBaseHardware(int numCpus, int memoryMb, string network)
+        {
+            var systemHardware = new List<RASD_Type>
+            {
+                new RASD_Type
+                {
+                    AllocationUnits = new cimString {Value = "hertz * 10 ^ 6"},
+                    InstanceID = new cimString {Value = "cpu"},
+                    ElementName = new cimString {Value = "Virtual CPUs"},
+                    ResourceType = new ResourceType {Value = "3"},
+                    VirtualQuantity = new cimUnsignedLong {Value = (ulong) numCpus}
+                },
+                new RASD_Type
+                {
+                    AllocationUnits = new cimString {Value = "byte * 2^20"},
+                    InstanceID = new cimString {Value = "memory"},
+                    ElementName = new cimString {Value = "Memory"},
+                    ResourceType = new ResourceType {Value = "4"},
+                    VirtualQuantity = new cimUnsignedLong {Value = (ulong) memoryMb}
+                },
+                new RASD_Type
+                {
+                    InstanceID = new cimString {Value = "ide0"},
+                    ElementName = new cimString {Value = "IDE"},
+                    ResourceType = new ResourceType {Value = "5"}
+                },
+                new RASD_Type
+                {
+                    InstanceID = new cimString {Value = "ide1"},
+                    ElementName = new cimString {Value = "IDE"},
+                    ResourceType = new ResourceType {Value = "5"}
+                },
+                new RASD_Type
+                {
+                    InstanceID = new cimString {Value = "scsi0"},
+                    ElementName = new cimString {Value = "SCSI"},
+                    ResourceType = new ResourceType {Value = "6"},
+                    ResourceSubType = new cimString {Value = "lsilogicsas"}
+                }
+            };
+
+            if (!string.IsNullOrWhiteSpace(network))
+            {
+                systemHardware.Add(
+                    new RASD_Type
+                    {
+                        AutomaticAllocation = new cimBoolean {Value = true},
+                        InstanceID = new cimString {Value = "network"},
+                        ElementName = new cimString {Value = "Network adapter 1"},
+                        ResourceType = new ResourceType {Value = "10"},
+                        ResourceSubType = new cimString {Value = "E1000"},
+                        VirtualQuantity = new cimUnsignedLong {Value = 1},
+                        Connection = new[] {new cimString {Value = network}}
+                    });
+            }
+
+            return systemHardware;
         }
 
         private static Section_Type CreateOperatingSystemSection(OperatingSystemType osType)
