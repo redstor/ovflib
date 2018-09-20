@@ -302,7 +302,7 @@ public partial class File_Type {
 [System.ComponentModel.DesignerCategoryAttribute("code")]
 [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.dmtf.org/wbem/wscim/1/common")]
 [System.Xml.Serialization.XmlRootAttribute("Weight", Namespace="http://schemas.dmtf.org/wbem/wscim/1/cim-schema/2/CIM_ResourceAllocationSettingDa" +
-    "ta", IsNullable=true)]
+    "ta")]
 public partial class cimUnsignedInt {
     
     private System.Xml.XmlAttribute[] anyAttrField;
@@ -361,7 +361,7 @@ public partial class qualifierUInt32 : cimUnsignedInt {
 [System.ComponentModel.DesignerCategoryAttribute("code")]
 [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.dmtf.org/wbem/wscim/1/common")]
 [System.Xml.Serialization.XmlRootAttribute("VirtualQuantity", Namespace="http://schemas.dmtf.org/wbem/wscim/1/cim-schema/2/CIM_ResourceAllocationSettingDa" +
-    "ta", IsNullable=true)]
+    "ta")]
 public partial class cimUnsignedLong {
     
     private System.Xml.XmlAttribute[] anyAttrField;
@@ -399,7 +399,7 @@ public partial class cimUnsignedLong {
 [System.ComponentModel.DesignerCategoryAttribute("code")]
 [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.dmtf.org/wbem/wscim/1/common")]
 [System.Xml.Serialization.XmlRootAttribute("AutomaticAllocation", Namespace="http://schemas.dmtf.org/wbem/wscim/1/cim-schema/2/CIM_ResourceAllocationSettingDa" +
-    "ta", IsNullable=true)]
+    "ta")]
 public partial class cimBoolean {
     
     private System.Xml.XmlAttribute[] anyAttrField;
@@ -514,7 +514,7 @@ public partial class CIM_ResourceAllocationSettingData_Type {
     private System.Xml.XmlAttribute[] anyAttrField;
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute()]
     public cimString Address {
         get {
             return this.addressField;
@@ -525,7 +525,7 @@ public partial class CIM_ResourceAllocationSettingData_Type {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute()]
     public cimString AddressOnParent {
         get {
             return this.addressOnParentField;
@@ -536,7 +536,7 @@ public partial class CIM_ResourceAllocationSettingData_Type {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute()]
     public cimString AllocationUnits {
         get {
             return this.allocationUnitsField;
@@ -547,7 +547,7 @@ public partial class CIM_ResourceAllocationSettingData_Type {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute()]
     public cimBoolean AutomaticAllocation {
         get {
             return this.automaticAllocationField;
@@ -558,7 +558,7 @@ public partial class CIM_ResourceAllocationSettingData_Type {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute()]
     public cimBoolean AutomaticDeallocation {
         get {
             return this.automaticDeallocationField;
@@ -569,7 +569,7 @@ public partial class CIM_ResourceAllocationSettingData_Type {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute()]
     public Caption1 Caption {
         get {
             return this.captionField;
@@ -580,7 +580,7 @@ public partial class CIM_ResourceAllocationSettingData_Type {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute("Connection", IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute("Connection")]
     public cimString[] Connection {
         get {
             return this.connectionField;
@@ -591,7 +591,7 @@ public partial class CIM_ResourceAllocationSettingData_Type {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute()]
     public ConsumerVisibility ConsumerVisibility {
         get {
             return this.consumerVisibilityField;
@@ -602,7 +602,7 @@ public partial class CIM_ResourceAllocationSettingData_Type {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute()]
     public cimString Description {
         get {
             return this.descriptionField;
@@ -623,7 +623,7 @@ public partial class CIM_ResourceAllocationSettingData_Type {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute("HostResource", IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute("HostResource")]
     public cimString[] HostResource {
         get {
             return this.hostResourceField;
@@ -644,7 +644,7 @@ public partial class CIM_ResourceAllocationSettingData_Type {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute()]
     public cimUnsignedLong Limit {
         get {
             return this.limitField;
@@ -655,7 +655,7 @@ public partial class CIM_ResourceAllocationSettingData_Type {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute()]
     public MappingBehavior MappingBehavior {
         get {
             return this.mappingBehaviorField;
@@ -666,7 +666,7 @@ public partial class CIM_ResourceAllocationSettingData_Type {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute()]
     public cimString OtherResourceType {
         get {
             return this.otherResourceTypeField;
@@ -677,7 +677,7 @@ public partial class CIM_ResourceAllocationSettingData_Type {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute()]
     public cimString Parent {
         get {
             return this.parentField;
@@ -688,7 +688,7 @@ public partial class CIM_ResourceAllocationSettingData_Type {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute()]
     public cimString PoolID {
         get {
             return this.poolIDField;
@@ -699,7 +699,7 @@ public partial class CIM_ResourceAllocationSettingData_Type {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute()]
     public cimUnsignedLong Reservation {
         get {
             return this.reservationField;
@@ -710,7 +710,7 @@ public partial class CIM_ResourceAllocationSettingData_Type {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute()]
     public cimString ResourceSubType {
         get {
             return this.resourceSubTypeField;
@@ -721,7 +721,7 @@ public partial class CIM_ResourceAllocationSettingData_Type {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute()]
     public ResourceType ResourceType {
         get {
             return this.resourceTypeField;
@@ -732,7 +732,7 @@ public partial class CIM_ResourceAllocationSettingData_Type {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute()]
     public cimUnsignedLong VirtualQuantity {
         get {
             return this.virtualQuantityField;
@@ -743,7 +743,7 @@ public partial class CIM_ResourceAllocationSettingData_Type {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute()]
     public cimString VirtualQuantityUnits {
         get {
             return this.virtualQuantityUnitsField;
@@ -754,7 +754,7 @@ public partial class CIM_ResourceAllocationSettingData_Type {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute()]
     public cimUnsignedInt Weight {
         get {
             return this.weightField;
@@ -796,7 +796,7 @@ public partial class CIM_ResourceAllocationSettingData_Type {
 [System.Diagnostics.DebuggerStepThroughAttribute()]
 [System.ComponentModel.DesignerCategoryAttribute("code")]
 [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.dmtf.org/wbem/wscim/1/common")]
-[System.Xml.Serialization.XmlRootAttribute("VirtualSystemIdentifier", Namespace="http://schemas.dmtf.org/wbem/wscim/1/cim-schema/2/CIM_VirtualSystemSettingData", IsNullable=true)]
+[System.Xml.Serialization.XmlRootAttribute("VirtualSystemIdentifier", Namespace="http://schemas.dmtf.org/wbem/wscim/1/cim-schema/2/CIM_VirtualSystemSettingData")]
 public partial class cimString {
     
     private System.Xml.XmlAttribute[] anyAttrField;
@@ -875,7 +875,7 @@ public partial class cimChar16 : cimString {
 [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://schemas.dmtf.org/wbem/wscim/1/cim-schema/2/CIM_ResourceAllocationSettingDa" +
     "ta")]
 [System.Xml.Serialization.XmlRootAttribute("Caption", Namespace="http://schemas.dmtf.org/wbem/wscim/1/cim-schema/2/CIM_ResourceAllocationSettingDa" +
-    "ta", IsNullable=true)]
+    "ta")]
 public partial class Caption1 : cimString {
 }
 
@@ -887,7 +887,7 @@ public partial class Caption1 : cimString {
 [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://schemas.dmtf.org/wbem/wscim/1/cim-schema/2/CIM_ResourceAllocationSettingDa" +
     "ta")]
 [System.Xml.Serialization.XmlRootAttribute(Namespace="http://schemas.dmtf.org/wbem/wscim/1/cim-schema/2/CIM_ResourceAllocationSettingDa" +
-    "ta", IsNullable=true)]
+    "ta")]
 public partial class ConsumerVisibility : cimAnySimpleType {
 }
 
@@ -934,7 +934,7 @@ public partial class cimAnySimpleType {
 [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://schemas.dmtf.org/wbem/wscim/1/cim-schema/2/CIM_ResourceAllocationSettingDa" +
     "ta")]
 [System.Xml.Serialization.XmlRootAttribute(Namespace="http://schemas.dmtf.org/wbem/wscim/1/cim-schema/2/CIM_ResourceAllocationSettingDa" +
-    "ta", IsNullable=true)]
+    "ta")]
 public partial class MappingBehavior : cimAnySimpleType {
 }
 
@@ -946,7 +946,7 @@ public partial class MappingBehavior : cimAnySimpleType {
 [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://schemas.dmtf.org/wbem/wscim/1/cim-schema/2/CIM_ResourceAllocationSettingDa" +
     "ta")]
 [System.Xml.Serialization.XmlRootAttribute(Namespace="http://schemas.dmtf.org/wbem/wscim/1/cim-schema/2/CIM_ResourceAllocationSettingDa" +
-    "ta", IsNullable=true)]
+    "ta")]
 public partial class ResourceType : cimAnySimpleType {
 }
 
@@ -1022,7 +1022,7 @@ public partial class RASD_Type : CIM_ResourceAllocationSettingData_Type {
 [System.Diagnostics.DebuggerStepThroughAttribute()]
 [System.ComponentModel.DesignerCategoryAttribute("code")]
 [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.dmtf.org/wbem/wscim/1/common")]
-[System.Xml.Serialization.XmlRootAttribute("AutomaticStartupActionSequenceNumber", Namespace="http://schemas.dmtf.org/wbem/wscim/1/cim-schema/2/CIM_VirtualSystemSettingData", IsNullable=true)]
+[System.Xml.Serialization.XmlRootAttribute("AutomaticStartupActionSequenceNumber", Namespace="http://schemas.dmtf.org/wbem/wscim/1/cim-schema/2/CIM_VirtualSystemSettingData")]
 public partial class cimUnsignedShort {
     
     private System.Xml.XmlAttribute[] anyAttrField;
@@ -1058,7 +1058,7 @@ public partial class cimUnsignedShort {
 [System.Diagnostics.DebuggerStepThroughAttribute()]
 [System.ComponentModel.DesignerCategoryAttribute("code")]
 [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.dmtf.org/wbem/wscim/1/common")]
-[System.Xml.Serialization.XmlRootAttribute("CreationTime", Namespace="http://schemas.dmtf.org/wbem/wscim/1/cim-schema/2/CIM_VirtualSystemSettingData", IsNullable=true)]
+[System.Xml.Serialization.XmlRootAttribute("CreationTime", Namespace="http://schemas.dmtf.org/wbem/wscim/1/cim-schema/2/CIM_VirtualSystemSettingData")]
 public partial class cimDateTime {
     
     private object itemField;
@@ -1068,7 +1068,7 @@ public partial class cimDateTime {
     private System.Xml.XmlAttribute[] anyAttrField;
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute("CIM_DateTime", typeof(string), IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute("CIM_DateTime", typeof(string))]
     [System.Xml.Serialization.XmlElementAttribute("Date", typeof(System.DateTime), DataType="date")]
     [System.Xml.Serialization.XmlElementAttribute("Datetime", typeof(System.DateTime))]
     [System.Xml.Serialization.XmlElementAttribute("Interval", typeof(string), DataType="duration")]
@@ -1185,7 +1185,7 @@ public partial class CIM_VirtualSystemSettingData_Type {
     private System.Xml.XmlAttribute[] anyAttrField;
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute()]
     public AutomaticRecoveryAction AutomaticRecoveryAction {
         get {
             return this.automaticRecoveryActionField;
@@ -1196,7 +1196,7 @@ public partial class CIM_VirtualSystemSettingData_Type {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute()]
     public AutomaticShutdownAction AutomaticShutdownAction {
         get {
             return this.automaticShutdownActionField;
@@ -1207,7 +1207,7 @@ public partial class CIM_VirtualSystemSettingData_Type {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute()]
     public AutomaticStartupAction AutomaticStartupAction {
         get {
             return this.automaticStartupActionField;
@@ -1218,7 +1218,7 @@ public partial class CIM_VirtualSystemSettingData_Type {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute()]
     public cimDateTime AutomaticStartupActionDelay {
         get {
             return this.automaticStartupActionDelayField;
@@ -1229,7 +1229,7 @@ public partial class CIM_VirtualSystemSettingData_Type {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute()]
     public cimUnsignedShort AutomaticStartupActionSequenceNumber {
         get {
             return this.automaticStartupActionSequenceNumberField;
@@ -1240,7 +1240,7 @@ public partial class CIM_VirtualSystemSettingData_Type {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute()]
     public Caption Caption {
         get {
             return this.captionField;
@@ -1251,7 +1251,7 @@ public partial class CIM_VirtualSystemSettingData_Type {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute()]
     public cimString ConfigurationDataRoot {
         get {
             return this.configurationDataRootField;
@@ -1262,7 +1262,7 @@ public partial class CIM_VirtualSystemSettingData_Type {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute()]
     public cimString ConfigurationFile {
         get {
             return this.configurationFileField;
@@ -1273,7 +1273,7 @@ public partial class CIM_VirtualSystemSettingData_Type {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute()]
     public cimString ConfigurationID {
         get {
             return this.configurationIDField;
@@ -1284,7 +1284,7 @@ public partial class CIM_VirtualSystemSettingData_Type {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute()]
     public cimDateTime CreationTime {
         get {
             return this.creationTimeField;
@@ -1295,7 +1295,7 @@ public partial class CIM_VirtualSystemSettingData_Type {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute()]
     public cimString Description {
         get {
             return this.descriptionField;
@@ -1326,7 +1326,7 @@ public partial class CIM_VirtualSystemSettingData_Type {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute()]
     public cimString LogDataRoot {
         get {
             return this.logDataRootField;
@@ -1337,7 +1337,7 @@ public partial class CIM_VirtualSystemSettingData_Type {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute("Notes", IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute("Notes")]
     public cimString[] Notes {
         get {
             return this.notesField;
@@ -1348,7 +1348,7 @@ public partial class CIM_VirtualSystemSettingData_Type {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute()]
     public cimString RecoveryFile {
         get {
             return this.recoveryFileField;
@@ -1359,7 +1359,7 @@ public partial class CIM_VirtualSystemSettingData_Type {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute()]
     public cimString SnapshotDataRoot {
         get {
             return this.snapshotDataRootField;
@@ -1370,7 +1370,7 @@ public partial class CIM_VirtualSystemSettingData_Type {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute()]
     public cimString SuspendDataRoot {
         get {
             return this.suspendDataRootField;
@@ -1381,7 +1381,7 @@ public partial class CIM_VirtualSystemSettingData_Type {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute()]
     public cimString SwapFileDataRoot {
         get {
             return this.swapFileDataRootField;
@@ -1392,7 +1392,7 @@ public partial class CIM_VirtualSystemSettingData_Type {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute()]
     public cimString VirtualSystemIdentifier {
         get {
             return this.virtualSystemIdentifierField;
@@ -1403,7 +1403,7 @@ public partial class CIM_VirtualSystemSettingData_Type {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute()]
     public cimString VirtualSystemType {
         get {
             return this.virtualSystemTypeField;
@@ -1442,7 +1442,7 @@ public partial class CIM_VirtualSystemSettingData_Type {
 [System.Diagnostics.DebuggerStepThroughAttribute()]
 [System.ComponentModel.DesignerCategoryAttribute("code")]
 [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://schemas.dmtf.org/wbem/wscim/1/cim-schema/2/CIM_VirtualSystemSettingData")]
-[System.Xml.Serialization.XmlRootAttribute(Namespace="http://schemas.dmtf.org/wbem/wscim/1/cim-schema/2/CIM_VirtualSystemSettingData", IsNullable=true)]
+[System.Xml.Serialization.XmlRootAttribute(Namespace="http://schemas.dmtf.org/wbem/wscim/1/cim-schema/2/CIM_VirtualSystemSettingData")]
 public partial class AutomaticRecoveryAction : cimAnySimpleType {
 }
 
@@ -1452,7 +1452,7 @@ public partial class AutomaticRecoveryAction : cimAnySimpleType {
 [System.Diagnostics.DebuggerStepThroughAttribute()]
 [System.ComponentModel.DesignerCategoryAttribute("code")]
 [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://schemas.dmtf.org/wbem/wscim/1/cim-schema/2/CIM_VirtualSystemSettingData")]
-[System.Xml.Serialization.XmlRootAttribute(Namespace="http://schemas.dmtf.org/wbem/wscim/1/cim-schema/2/CIM_VirtualSystemSettingData", IsNullable=true)]
+[System.Xml.Serialization.XmlRootAttribute(Namespace="http://schemas.dmtf.org/wbem/wscim/1/cim-schema/2/CIM_VirtualSystemSettingData")]
 public partial class AutomaticShutdownAction : cimAnySimpleType {
 }
 
@@ -1462,7 +1462,7 @@ public partial class AutomaticShutdownAction : cimAnySimpleType {
 [System.Diagnostics.DebuggerStepThroughAttribute()]
 [System.ComponentModel.DesignerCategoryAttribute("code")]
 [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://schemas.dmtf.org/wbem/wscim/1/cim-schema/2/CIM_VirtualSystemSettingData")]
-[System.Xml.Serialization.XmlRootAttribute(Namespace="http://schemas.dmtf.org/wbem/wscim/1/cim-schema/2/CIM_VirtualSystemSettingData", IsNullable=true)]
+[System.Xml.Serialization.XmlRootAttribute(Namespace="http://schemas.dmtf.org/wbem/wscim/1/cim-schema/2/CIM_VirtualSystemSettingData")]
 public partial class AutomaticStartupAction : cimAnySimpleType {
 }
 
@@ -1472,7 +1472,7 @@ public partial class AutomaticStartupAction : cimAnySimpleType {
 [System.Diagnostics.DebuggerStepThroughAttribute()]
 [System.ComponentModel.DesignerCategoryAttribute("code")]
 [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://schemas.dmtf.org/wbem/wscim/1/cim-schema/2/CIM_VirtualSystemSettingData")]
-[System.Xml.Serialization.XmlRootAttribute(Namespace="http://schemas.dmtf.org/wbem/wscim/1/cim-schema/2/CIM_VirtualSystemSettingData", IsNullable=true)]
+[System.Xml.Serialization.XmlRootAttribute(Namespace="http://schemas.dmtf.org/wbem/wscim/1/cim-schema/2/CIM_VirtualSystemSettingData")]
 public partial class Caption : cimString {
 }
 

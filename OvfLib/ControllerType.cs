@@ -3,7 +3,6 @@
     public enum ControllerType
     {
         IDE,
-        SCSI,
-        SATA
+        SCSI
     }
 }
